@@ -5,6 +5,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @messages = Message.all
   end
 
 end

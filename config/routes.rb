@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'users#new'
+  root to: 'conversations#show'
+
+  # root 'users#new'
   resources :friends
   resources :conversations
 

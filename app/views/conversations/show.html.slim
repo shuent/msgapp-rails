@@ -1,7 +1,9 @@
-h1 Taro
-.msg
-  .friend_msg taro: やっほー
-  .your_msg you: どうした
-  .friend_msg taro: きょうあそぼ
-  input type="text"/
-  input type="submit"/
+h1 chatroom
+
+#messages
+  = render @messages
+
+form
+  label Say somthing:
+  br
+  input type="text" data-behavior="conversation_speaker"
