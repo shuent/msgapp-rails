@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # custom
 gem 'slim-rails'
+gem 'sorcery'
 
 
 

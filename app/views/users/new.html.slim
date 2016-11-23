@@ -1,0 +1,15 @@
+h2 Registering New User
+
+= form_for @user do |f|
+  = render 'shared/error_messages', object: f.object
+
+  .field
+    = f.label :username
+    = f.text_field :username
+  .field
+    = f.label :password
+    = f.password_field :password
+  .actions
+    = f.submit
+
+p or #{link_to "login", new_session_path}
