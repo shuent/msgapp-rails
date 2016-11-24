@@ -1,18 +1,16 @@
 h1 Friend list
-a href="new" 友達追加する
+=link_to "友達追加する", new_friend_path
 table
   thead
     th name
     th ひとこと
   tbody
+  - @friends.each do |friend|
     tr
-      td たろう
-      td 今日暑いわー
-    tr
-      td はなこ
-      td みんなに感謝！
-    tr
-      td こうた
-      td 高校楽しい！
+      td = friend.username
+
+  tr
+    td こうた
+    td 高校楽しい！
 
          

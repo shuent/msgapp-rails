@@ -1,8 +1,12 @@
 h1 add friend by id
-input type="text" value="検索する"/
-input type="submit"
+= form_tag new_friend_path, :method => 'get' do 
+  = text_field_tag :searching_name, params[:searching_name] 
+  = submit_tag "Search"
+
 br
-.add_friend
-  .name かくえい
-  .id kakuei333
-  input type="submit" value="add"
+
+- if @friend
+  =>@friend.username
+  = link_to "add",friends_path(friend_id: @friend.id) , method: 'post'
+
+

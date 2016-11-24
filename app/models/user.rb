@@ -3,13 +3,10 @@ class User < ApplicationRecord
 
   has_many :friendships
   has_many :friends, through: :friendships
-  
-  has_many :conversations_of_sender,:class_name => 'Conversation', :foreign_key => 'sender_id'
-  has_many :conversations_of_recipient,:class_name => 'Conversation', :foreign_key => 'recipient_id'
 
-  def conversations
-    conversations_of_recipient + conversations_of_sender
-  end
+  has_many :user_conversations
+  has_many :conversations, through: :user_conversations
+
 
   validates :username,
     presence: true,
@@ -17,4 +14,8 @@ class User < ApplicationRecord
   validates :password,
     presence: true,
     length: { minimum: 6 }, if: -> { new_record? || changes["password"] }
+
+  def self.search_by_username(usernam)
+    User.find_by(username: usernam)
+  end
 end
