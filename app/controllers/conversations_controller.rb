@@ -5,7 +5,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @messages = Message.all
+    @messages = current_user.conversations.find(params[:id]).messages.all
   end
 
 end

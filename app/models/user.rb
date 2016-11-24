@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :conversations_of_recipient,:class_name => 'Conversation', :foreign_key => 'recipient_id'
 
   def conversations
-    conversations_of_recipient + conversations_of_sender
+    conversations_of_recipient.dup << conversations_of_sender.dup
   end
 
   validates :username,
