@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'users#new'
-  resources :friends
-  resources :conversations do
+  root 'conversations#index'
+  resources :friends,only: [:index,:new,:create]
+  resources :conversations, only: [:index,:new,:create,:show] do 
     resources :messages,only: [:create]
   end
   post 'conversations/find_or_new_conv'

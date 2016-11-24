@@ -8,7 +8,8 @@ class ConversationsController < ApplicationController
   end
 
   def find_or_new_conv
-    if q = Conversation.joins(:users).where(users: {id: [current_user.id,params[:friend_id].to_i]}).first
+    q = Conversation.joins(:users).where(users: {id: current_user.id}) & Conversation.joins(:users).where(users: {id: params[:friend_id].to_i})
+    if q = q.first
       redirect_to action: :show, id: q.id
     else
       con = Conversation.create
@@ -21,20 +22,19 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.find(params[:id])
-    @messages = Conversation.find(params[:id]).messages
-
-    # new message
-    @message = Message.new
+    if @conversation = Conversation.find_by_id(params[:id])
+      redirect_to action: :index unless @conversation.users.include?(current_user)
+      @messages = Conversation.find(params[:id]).messages
+      # new message
+      @message = Message.new
+    else
+      redirect_to action: :index
+    end
   end
 
-  def new
-    
+  private
+  def currentuser?
   end
 
-  def create
-    # @conversation = Conversation.find_or_initialize_by()
-    redirect_to :show
-  end
 
 end

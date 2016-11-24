@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
  
   private
   def not_authenticated
-    redirect_to root_path
+    redirect_to new_session_path, notice: "Login first"
   end
 end
