@@ -2,6 +2,7 @@ class FriendsController < ApplicationController
 
   def index
     @friends = current_user.friends
+    
     # 友達リスト
   end
   def new

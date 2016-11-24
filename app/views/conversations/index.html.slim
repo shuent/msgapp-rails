@@ -5,16 +5,17 @@ table
     th latest message
     th is_read?
     th time_created
-
+    / - binding.pry
   tbody
-    tr
-      td たろう
-      td きょうあそぼ
-      td 未読
-      td 16:45
-    tr
-      td はなこ
-      td 返信よこせや
-      td 既読
-      td 18:22
-      
+    - @conversations.each do |conversation|
+      tr
+      -if conversation.partner(current_user) # no need
+        td = link_to conversation.partner(current_user).username, conversation 
+        td message here
+        td read or not
+        td time
+    / tr
+    /   td はなこ
+    /   td 返信よこせや
+    /   td 既読
+    /   td 18:22

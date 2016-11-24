@@ -2,7 +2,10 @@ Rails.application.routes.draw do
 
   root 'users#new'
   resources :friends
-  resources :conversations
+  resources :conversations do
+    resources :messages,only: [:create]
+  end
+  post 'conversations/find_or_new_conv'
 
   resources :users, only: %i(new create show)
   resources :sessions, only: %i(new create destroy)
