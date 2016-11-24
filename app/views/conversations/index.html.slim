@@ -7,14 +7,22 @@ table
     th time_created
 
   tbody
-    tr
-      td たろう
-      td きょうあそぼ
-      td 未読
-      td 16:45
-    tr
-      td はなこ
-      td 返信よこせや
-      td 既読
-      td 18:22
+  - if @conversations
+    - @conversations.each do |conversation|
+      tr
+        td =current_user == conversation.recipient
+        td =link_to "最新のmessage", conversation
+        td 最新のmessage is_read?
+        td 最新のmessage time_created
+
+  tr
+    td たろう
+    td きょうあそぼ
+    td 未読
+    td 16:45
+  tr
+    td はなこ
+    td 返信よこせや
+    td 既読
+    td 18:22
       

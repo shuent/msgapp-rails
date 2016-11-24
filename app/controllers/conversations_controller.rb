@@ -1,10 +1,12 @@
 class ConversationsController < ApplicationController
 
   def index
-    # home画面、メッセージ一覧
+    @conversations = current_user.conversations
   end
 
   def show
+    binding.pry
+    @messages = current_user.conversations
   end
 
 end
