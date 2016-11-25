@@ -26,8 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # custom
 gem 'slim-rails'
 gem 'sorcery'
-gem 'puma'
-gem 'pry-rails'
+
 
 
 # Use ActiveModel has_secure_password
@@ -42,6 +41,8 @@ gem 'pry-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'puma'
+  gem 'pry-rails'
 end
 
 group :development do

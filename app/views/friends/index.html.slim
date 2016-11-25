@@ -7,7 +7,7 @@ table
   tbody
   - @friends.each do |friend|
     tr
-      td = link_to friend.username, conversations_find_or_new_conv_path(friend_id: friend.id), method: :POST
+      td = link_to friend.username, conversations_find_or_new_path(friend_id: friend.id), method: :POST
 
   tr
     td こうた

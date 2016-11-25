@@ -8,7 +8,7 @@ class ConversationsController < ApplicationController
 
   end
 
-  def find_or_new_conv
+  def find_or_new
     q = Conversation.joins(:users).where(users: {id: current_user.id}) & Conversation.joins(:users).where(users: {id: params[:friend_id].to_i})
     if q = q.first
       redirect_to action: :show, id: q.id
@@ -23,7 +23,6 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    
   end
 
   private
