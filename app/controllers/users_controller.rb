@@ -12,8 +12,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    # binding.pry
     if @user.save
-      redirect_to user_path(@user), notice: "Signed up!"
+      login(user_params[:username],user_params[:password])
+      redirect_to root_path, notice: "Welcome to msg app, #{current_user.username}"
     else
       render :new, notice: "Failed to signin"
     end

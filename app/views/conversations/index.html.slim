@@ -3,17 +3,17 @@ table
   thead
     th Name
     th latest message
-    th is_read?
+    / th is_read?
     th time_created
     / - binding.pry
   tbody
     - @conversations.each do |conversation|
-      tr
-      -if conversation.partner(current_user) # no need
-        td = link_to conversation.partner(current_user).username, conversation 
-        td = conversation.messages.last.body
-        td = conversation.messages.last.is_read
-        td = conversation.messages.last.created_at
+      -if conversation.messages.last
+        tr
+          td = link_to conversation.partner(current_user).username, conversation 
+          td = conversation.messages.last.body
+          / td = conversation.messages.last.is_read
+          td = conversation.messages.last.created_at
     / tr
     /   td はなこ
     /   td 返信よこせや

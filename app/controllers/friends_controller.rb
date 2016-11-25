@@ -12,8 +12,13 @@ class FriendsController < ApplicationController
   end
   def create
     # binding.pry
-    Friendship.create(friend_id: params[:friend_id], user_id: current_user.id)
-    redirect_to friends_path
+    @friendship = Friendship.new(friend_id: params[:friend_id], user_id: current_user.id)
+    if @friendship.save
+      redirect_to friends_path
+    else
+      redirect_to friends_path,notice: "Already your friend"
+    end
+
     # else
     #   redirect_to friends_path
     # end
