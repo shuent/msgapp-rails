@@ -1,5 +1,5 @@
+p = link_to "Back to Messages index", conversations_path
 h1 =@conversation.partner(current_user).username
-h3 = link_to "Back to Messages index", conversations_path
 
 .msg
   -@messages.each do |message|

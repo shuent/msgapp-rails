@@ -7,14 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%=render 'shared/flash_message' %>
   <% if current_user %>
-    <%= link_to "log out", session_path(current_user), method: :DELETE %> 
-    <%= link_to "Friend list",friends_path %>
-    <%= link_to "Messages list",conversations_path %>
+  <nav class="navbar navbar-defalt navbar-fixed-top">
+    <div class="container">
+      <ul class="list-inline" id="navlist">
+        <li><%= link_to "Log out", session_path(current_user), method: :DELETE %> </li>
+        <li><%= link_to "Friends",friends_path %></li>
+        <li><%= link_to "Messages",conversations_path %></li>
+      </ul>
+    </div>
+  </nav>
   <% end %>
+  <%=render 'shared/flash_message' %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
-<%= yield %>
 
 </body>
 </html>
