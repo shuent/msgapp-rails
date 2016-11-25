@@ -11,9 +11,9 @@ table
       tr
       -if conversation.partner(current_user) # no need
         td = link_to conversation.partner(current_user).username, conversation 
-        td message here
-        td read or not
-        td time
+        td = conversation.messages.last.body
+        td = conversation.messages.last.is_read
+        td = conversation.messages.last.created_at
     / tr
     /   td はなこ
     /   td 返信よこせや

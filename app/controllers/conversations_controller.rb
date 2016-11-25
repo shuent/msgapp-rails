@@ -1,7 +1,8 @@
 class ConversationsController < ApplicationController
+  before_action :show_cu, only: [:show]
 
   def index
-    @conversations = current_user.conversations
+    @conversations = current_user.conversations.includes(:messages).includes(:users)
     # binding.pry
     # home画面、メッセージ一覧
 
@@ -17,23 +18,24 @@ class ConversationsController < ApplicationController
       con.users << User.find(params[:friend_id].to_i)
       redirect_to action: :show, id: con.id
     end
-    binding.pry
+    # binding.pry
 
   end
 
   def show
-    if @conversation = Conversation.find_by_id(params[:id])
+    
+  end
+
+  private
+  def show_cu
+    if @conversation = Conversation.includes(:users).find_by_id(params[:id])
       redirect_to action: :index unless @conversation.users.include?(current_user)
-      @messages = Conversation.find(params[:id]).messages
+      @messages = @conversation.messages.includes(:sender)
       # new message
       @message = Message.new
     else
       redirect_to action: :index
     end
-  end
-
-  private
-  def currentuser?
   end
 
 

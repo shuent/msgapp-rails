@@ -1,14 +1,12 @@
 h1 =@conversation.partner(current_user).username
+h3 = link_to "Back to Messages index", conversations_path
+
 .msg
   -@messages.each do |message|
     / - binding.pry
     .user_name = message.sender.username
     .body = message.body
     br
-  p demo
-  .friend_msg taro: やっほー
-  .your_msg you: どうした
-  .friend_msg taro: きょうあそぼ
 
 = form_for([@conversation, @message]) do |f|
   .field
