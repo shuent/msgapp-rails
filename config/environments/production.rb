@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # For use action cable
-  config.web_socket_server_url = "wss://action-cable-example.herokuapp.com/cable"
+  config.web_socket_server_url = "wss://msgapp-su.herokuapp.com/cable"
   config.action_cable.allowed_request_origins = ['https://msgapp-su.herokuapp.com', 'http://msgapp-su.herokuapp.com']
   # Code is not reloaded between requests.
   config.cache_classes = true
