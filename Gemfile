@@ -30,7 +30,7 @@ gem 'slim-rails'
 gem 'sorcery'
 gem 'puma'
 gem 'pry-rails'
-# gem 'redis', '~> 3.0'
+gem 'redis', '~> 3.0'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
