@@ -9,6 +9,11 @@ Rails.application.routes.draw do
 
   resources :users, only: %i(new create)
   resources :sessions, only: %i(new create destroy)
+
+   # Serve websocket cable requests in-process
+  # mount ActionCable.server => '/cable'
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

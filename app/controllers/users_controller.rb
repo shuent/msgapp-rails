@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # binding.pry
+
     if @user.save
       login(user_params[:username],user_params[:password])
       redirect_to root_path, notice: "Welcome to msg app, #{current_user.username}"

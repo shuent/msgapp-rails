@@ -1,8 +1,18 @@
 class MessagesController < ApplicationController
   def create
-    a = Message.create(message_params)
+    message = Message.new(message_params)
+    if message.save
+      ActionCable.server.broadcast 'messages',
+        message: message.body,
+        sender: message.sender.username
+      head :ok
+    else
+      redirect_to conversations_path
+    end
     # binding.pry
-    redirect_back(fallback_location: conversation_path(params[:conversation_id]))
+    # do some stuff
+
+    # redirect_back(fallback_location: conversation_path(params[:conversation_id]))
   end
 
   private

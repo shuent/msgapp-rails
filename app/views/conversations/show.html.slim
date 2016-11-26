@@ -1,14 +1,14 @@
 p = link_to "Back to Messages index", conversations_path
 h1 =@conversation.partner(current_user).username
 
-.msg
-  -@messages.each do |message|
-    / - binding.pry
-    .user_name = message.sender.username
-    .body = message.body
-    br
+.panel.panel-default
+  / - binding.pry
+  - if @messages.any?
+    .panel-body#messages
+      == render partial: 'messages/message', collection: @messages
+      / .user_name = message.sender.username
+      / .body = message.body
+  - else
+    .panel-body.hidden#messages
 
-= form_for([@conversation, @message]) do |f|
-  .field
-    = f.text_field :body
-    = f.submit
+== render partial: 'messages/message_form',locals:{messages: @message,conversation: @conversation}
