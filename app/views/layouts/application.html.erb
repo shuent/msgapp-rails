@@ -19,10 +19,12 @@
         <li><%= link_to "Messages",conversations_path %></li>
       </ul>
     </div>
+
   </nav>
   <% end %>
-  <%=render 'shared/flash_message' %>
   <div class="container">
+  <%=render 'shared/flash_message' %>
+    
     <%= yield %>
   </div>
 
